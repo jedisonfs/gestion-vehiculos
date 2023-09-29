@@ -8,7 +8,8 @@ import java.util.Date;
 
 public class OwnerDTO implements Serializable {
 
-    private Integer ownerId;
+    @NotNull
+    private Integer id;
 
     @NotNull
     private String documentNumber;
@@ -40,12 +41,12 @@ public class OwnerDTO implements Serializable {
 
     private TypeVehicleDTO typeVehicleId;
 
-    public Integer getOwnerId() {
-        return ownerId;
+    public Integer getid() {
+        return id;
     }
 
-    public void setOwnerId(Integer ownerId) {
-        this.ownerId = ownerId;
+    public void setid(Integer id) {
+        this.id = id;
     }
 
     public String getDocumentNumber() {

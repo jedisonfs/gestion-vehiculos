@@ -11,6 +11,7 @@ public class TypeDocumentDTO implements Serializable {
     private static final long serialVersionUID = 36L;
 
 
+    @NotNull
     private Integer id;
 
     @NotNull

@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 public class TypeTerrainDTO implements Serializable {
 
-
+    @NotNull
     private Integer id;
 
     @NotNull

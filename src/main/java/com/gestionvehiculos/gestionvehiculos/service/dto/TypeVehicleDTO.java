@@ -8,6 +8,7 @@ public class TypeVehicleDTO implements Serializable {
 
     private static final long serialVersionUID = 657L;
 
+    @NotNull
     private Integer id;
 
     @NotNull

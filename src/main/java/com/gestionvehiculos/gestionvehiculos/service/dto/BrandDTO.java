@@ -7,9 +7,8 @@ public class BrandDTO implements Serializable {
 
     private static final long serialVersionUID = 53L;
 
-
+    @NotNull
     private Integer id;
-
     @NotNull
     private String brandName;
 
