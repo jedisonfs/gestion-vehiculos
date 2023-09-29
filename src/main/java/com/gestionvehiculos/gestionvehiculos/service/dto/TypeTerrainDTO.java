@@ -1,23 +1,17 @@
-package com.gestionvehiculos.gestionvehiculos.domain;
+package com.gestionvehiculos.gestionvehiculos.service.dto;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
-@Entity
-@Table(name = "type_terrain")
-public class TypeTerrain implements Serializable {
+public class TypeTerrainDTO implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     private Integer id;
 
     @NotNull
-    @Column(name = "name_terrain", length = 40)
     private String nameTerrain;
 
-    @OneToOne(mappedBy = "typeTerrainId")
-    private TypeVehicleEntity typeVehicleId;
+    private TypeVehicleDTO typeVehicleId;
 
     public Integer getId() {
         return id;
@@ -35,11 +29,11 @@ public class TypeTerrain implements Serializable {
         this.nameTerrain = nameTerrain;
     }
 
-    public TypeVehicleEntity getTypeVehicleId() {
+    public TypeVehicleDTO getTypeVehicleId() {
         return typeVehicleId;
     }
 
-    public void setTypeVehicleId(TypeVehicleEntity typeVehicleId) {
+    public void setTypeVehicleId(TypeVehicleDTO typeVehicleId) {
         this.typeVehicleId = typeVehicleId;
     }
 }

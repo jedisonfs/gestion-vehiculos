@@ -20,7 +20,7 @@ public class TypeVehicleEntity implements Serializable {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "fk_type_terrain_id", nullable = false, foreignKey = @ForeignKey(name = ("fk_type_terrain_vehicle_id")), referencedColumnName = ("id"))
-    private TypeTerrain typeTerrainId;
+    private TypeTerrainEntity typeTerrainId;
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "typeVehicleId")
     private OwnerEntity ownerEntityId;
@@ -41,11 +41,11 @@ public class TypeVehicleEntity implements Serializable {
         this.nameTypeVehicle = nameTypeVehicle;
     }
 
-    public TypeTerrain getTypeTerrainId() {
+    public TypeTerrainEntity getTypeTerrainId() {
         return typeTerrainId;
     }
 
-    public void setTypeTerrainId(TypeTerrain typeTerrainId) {
+    public void setTypeTerrainId(TypeTerrainEntity typeTerrainId) {
         this.typeTerrainId = typeTerrainId;
     }
 
