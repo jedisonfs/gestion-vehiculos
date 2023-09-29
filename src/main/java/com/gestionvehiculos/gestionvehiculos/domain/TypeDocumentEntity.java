@@ -5,6 +5,7 @@ import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "type_document", uniqueConstraints = {
@@ -17,7 +18,6 @@ public class TypeDocumentEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Integer id;
 
     @NotNull
@@ -27,6 +27,9 @@ public class TypeDocumentEntity implements Serializable {
     @NotNull
     @Column(name = "document_name", length = 20, nullable = false)
     private String documentName;
+
+    @OneToMany(mappedBy = ("typeDocumentId"),cascade = CascadeType.ALL)
+    private List<OwnerEntity> ownerList;
 
     public Integer getId() {
         return id;
@@ -50,5 +53,13 @@ public class TypeDocumentEntity implements Serializable {
 
     public void setDocumentName(String documentName) {
         this.documentName = documentName;
+    }
+
+    public List<OwnerEntity> getOwnerList() {
+        return ownerList;
+    }
+
+    public void setOwnerList(List<OwnerEntity> ownerList) {
+        this.ownerList = ownerList;
     }
 }
