@@ -1,8 +1,5 @@
 package com.gestionvehiculos.gestionvehiculos.service.dto;
 
-import com.gestionvehiculos.gestionvehiculos.domain.TypeDocumentEntity;
-import com.gestionvehiculos.gestionvehiculos.domain.TypeVehicleEntity;
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;

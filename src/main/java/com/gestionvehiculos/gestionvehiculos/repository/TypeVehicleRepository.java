@@ -1,6 +1,9 @@
 package com.gestionvehiculos.gestionvehiculos.repository;
 
+import com.gestionvehiculos.gestionvehiculos.domain.TypeVehicleEntity;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-public interface TypeVehicleRepository extends CrudRepository<TypeVehicleRepository, Integer> {
+@Repository
+public interface TypeVehicleRepository extends CrudRepository<TypeVehicleEntity, Integer> {
 }
