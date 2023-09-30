@@ -7,14 +7,15 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public interface BrandService {
 
+    Boolean exists(Integer id);
+
+    Boolean existsByBrandName(String brandName);
+
     @Transactional(readOnly = true)
     BrandDTO findById(Integer id);
 
     @Transactional(readOnly = true)
     BrandDTO findByBrandName(String brandName);
-
-    @Transactional(readOnly = true)
-    BrandDTO findByEmail(String email);
 
     BrandDTO save(BrandDTO BrandDTO);
 

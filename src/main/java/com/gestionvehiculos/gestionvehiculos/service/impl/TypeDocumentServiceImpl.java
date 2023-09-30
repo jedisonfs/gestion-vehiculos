@@ -8,8 +8,8 @@ import com.gestionvehiculos.gestionvehiculos.service.mapper.TypeDocumentMapper;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-@Component("TypeDocumentServiceImpl")
 @Transactional
+@Component("TypeDocumentServiceImpl")
 public class TypeDocumentServiceImpl implements TypeDocumentService {
 
     private final TypeDocumenRepository documenRepository;
@@ -54,7 +54,8 @@ public class TypeDocumentServiceImpl implements TypeDocumentService {
     @Override
     public TypeDocumentDTO update(TypeDocumentDTO typeDocumentDTO) {
         TypeDocumentEntity dto = documenRepository.save(documentMapper.toTypeDocumentEntity(typeDocumentDTO));
-        return documentMapper.toTypeDocumentDTO(dto);    }
+        return documentMapper.toTypeDocumentDTO(dto);
+    }
 
     @Override
     public void deleteById(Integer id) {
