@@ -9,18 +9,20 @@ import org.springframework.transaction.annotation.Transactional;
 public interface TypeTerrainService {
 
     Boolean exists(Integer id);
-    Boolean existsByNameTerrain(String nameTerrain);
+
+    Boolean existsByPlate(String initial);
 
     @Transactional(readOnly = true)
-    TypeTerrainDTO findById(Integer id);
+    TypeVehicleDTO findById(Integer id);
 
     @Transactional(readOnly = true)
-    TypeTerrainDTO findByNameTerrain(String nameTerrain);
+    TypeVehicleDTO findByNameTypeVehicle(String plate);
 
-    TypeTerrainDTO save(TypeTerrainDTO TypeTerrainDTO);
+    TypeVehicleDTO save(TypeVehicleDTO TypeVehicleDTO);
 
-    TypeTerrainDTO update(TypeTerrainDTO TypeTerrainDTO);
+    TypeVehicleDTO update(TypeVehicleDTO TypeVehicleDTO);
 
     void deleteById(Integer id);
-    void deleteByNameTerrain(String nameTerrain);
+
+    void deleteByNameTypeVehicle(String nameTypeVehicle);
 }

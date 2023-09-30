@@ -16,8 +16,8 @@ public interface TypeVehicleMapper {
 
     @Mapping(source = "typeVehicleDTO.id", target = "id")
     @Mapping(source = "typeVehicleDTO.nameTypeVehicle", target = "nameTypeVehicle")
-    TypeVehicleDTO toTypeVehicleDTO(TypeVehicleDTO typeVehicleDTO);
+    TypeVehicleDTO toTypeVehicleDTO(TypeVehicleEntity typeVehicleDTO);
 
     @InheritConfiguration
-    TypeVehicleEntity toTypeVehicleEntity(TypeVehicleEntity typeVehicleEntity);
+    TypeVehicleEntity toTypeVehicleEntity(TypeVehicleDTO typeVehicleEntity);
 }

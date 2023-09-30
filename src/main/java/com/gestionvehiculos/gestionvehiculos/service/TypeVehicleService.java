@@ -7,18 +7,21 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public interface TypeVehicleService {
 
+    Boolean existsById(Integer id);
+    Boolean existsByNameTypeVehicle(String nameTypeVehicle);
+
     @Transactional(readOnly = true)
     TypeVehicleDTO findById(Integer id);
 
     @Transactional(readOnly = true)
-    TypeVehicleDTO findByPlate(String plate);
+    TypeVehicleDTO findByNameTypeVehicle(String nameTypeVehicle);
 
-    TypeVehicleDTO save(TypeVehicleDTO TypeVehicleDTO);
+    TypeVehicleDTO save(TypeVehicleDTO typeVehicleDTO);
 
-    TypeVehicleDTO update(TypeVehicleDTO TypeVehicleDTO);
+    TypeVehicleDTO update(TypeVehicleDTO typeVehicleDTO);
 
     void deleteById(Integer id);
-    void deleteBynameTypeVehicle(String nameTypeVehicle);
+    void deleteByNameTypeVehicle(String nameTypeVehicle);
 
 
 
