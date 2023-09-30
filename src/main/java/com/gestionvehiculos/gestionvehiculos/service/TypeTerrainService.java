@@ -8,6 +8,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public interface TypeTerrainService {
 
+    Boolean exists(Integer id);
+    Boolean existsByNameTerrain(String nameTerrain);
+
     @Transactional(readOnly = true)
     TypeTerrainDTO findById(Integer id);
 
