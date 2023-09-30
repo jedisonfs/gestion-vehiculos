@@ -15,9 +15,7 @@ public interface TypeVehicleMapper {
     TypeVehicleMapper INSTANCE = Mappers.getMapper(TypeVehicleMapper.class);
 
     @Mapping(source = "typeVehicleDTO.id", target = "id")
-    @Mapping(source = "typeVehicleDTO.nameTypeVehicle.id", target = "id")
-    @Mapping(source = "typeVehicleDTO.typeTerrainId.id", target = "id")
-    @Mapping(source = "typeVehicleDTO.ownerEntityId.id", target = "id")
+    @Mapping(source = "typeVehicleDTO.nameTypeVehicle", target = "nameTypeVehicle")
     TypeVehicleDTO toTypeVehicleDTO(TypeVehicleDTO typeVehicleDTO);
 
     @InheritConfiguration

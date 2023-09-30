@@ -1,11 +1,17 @@
 package com.gestionvehiculos.gestionvehiculos.service.dto;
 
+import lombok.*;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 
-
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@AllArgsConstructor
 public class OwnerDTO implements Serializable {
 
     @NotNull
@@ -36,104 +42,9 @@ public class OwnerDTO implements Serializable {
     private String phone;
 
 
-    @NotNull
-    private TypeDocumentDTO typeDocumentId;
+//    @NotNull
+//    private TypeDocumentDTO typeDocumentId;
+//
+//    private TypeVehicleDTO typeVehicleId;
 
-    private TypeVehicleDTO typeVehicleId;
-
-    public Integer getid() {
-        return id;
-    }
-
-    public void setid(Integer id) {
-        this.id = id;
-    }
-
-    public String getDocumentNumber() {
-        return documentNumber;
-    }
-
-    public void setDocumentNumber(String documentNumber) {
-        this.documentNumber = documentNumber;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getSecondName() {
-        return secondName;
-    }
-
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
-    }
-
-    public String getFirstSurname() {
-        return firstSurname;
-    }
-
-    public void setFirstSurname(String firstSurname) {
-        this.firstSurname = firstSurname;
-    }
-
-    public String getSecondSurname() {
-        return secondSurname;
-    }
-
-    public void setSecondSurname(String secondSurname) {
-        this.secondSurname = secondSurname;
-    }
-
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public TypeDocumentDTO getTypeDocumentId() {
-        return typeDocumentId;
-    }
-
-    public void setTypeDocumentId(TypeDocumentDTO typeDocumentId) {
-        this.typeDocumentId = typeDocumentId;
-    }
-
-    public TypeVehicleDTO getTypeVehicleId() {
-        return typeVehicleId;
-    }
-
-    public void setTypeVehicleId(TypeVehicleDTO typeVehicleId) {
-        this.typeVehicleId = typeVehicleId;
-    }
 }

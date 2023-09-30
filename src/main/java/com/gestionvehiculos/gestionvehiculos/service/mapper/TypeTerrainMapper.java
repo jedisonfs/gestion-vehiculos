@@ -9,7 +9,7 @@ import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Component;
 
 @Component("TypeTerrainMapper")
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring") 
 public interface TypeTerrainMapper {
 
     TypeTerrainMapper INSTANCE = Mappers.getMapper(TypeTerrainMapper.class);
