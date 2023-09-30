@@ -25,5 +25,5 @@ public interface OwnerMapper {
     @Mapping(source = "ownerEntity.phone", target = "phone")
     OwnerDTO toOwnerDTO(OwnerEntity ownerEntity);
     @InheritConfiguration
-    OwnerEntity toOwnerDTO(OwnerDTO ownerDTO);
+    OwnerEntity toOwnerEntity(OwnerDTO ownerDTO);
 }

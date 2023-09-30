@@ -7,6 +7,10 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public interface OwnerService {
 
+    Boolean exists(Integer id);
+
+    Boolean existsByDocumentNumber(String documentNumber);
+    Boolean existsByEmail(String email);
     @Transactional(readOnly = true)
     OwnerDTO findByownerId(Integer ownerId);
 

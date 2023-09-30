@@ -60,7 +60,7 @@ public class BrandController {
         return ResponseEntity.badRequest().build();
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("{brandName}")
     public ResponseEntity<Void> deleteById(@PathVariable String brandName) {
         if (brandName != null || service.existsByBrandName(brandName)) {
             service.deleteByBrandName(brandName);
