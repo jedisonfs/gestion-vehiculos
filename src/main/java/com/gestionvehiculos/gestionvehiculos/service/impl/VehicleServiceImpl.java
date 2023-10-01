@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Transactional
 @Component("VehicleServiceImpl")
 public class VehicleServiceImpl implements VehicleService {
@@ -35,6 +38,14 @@ public class VehicleServiceImpl implements VehicleService {
     @Override
     public Boolean existsByVin(String vin) {
         return repository.existsByVin(vin);
+    }
+
+    @Override
+    public List<VehicleDTO> findAll() {
+        return repository.findAll()
+                .stream()
+                .map(mapper::toVehicleDTO)
+                .collect(Collectors.toList());
     }
 
     @Override

@@ -8,6 +8,9 @@ import com.gestionvehiculos.gestionvehiculos.service.mapper.BrandMapper;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Component("BrandServiceImpl")
 @Transactional
 public class BrandServiceImpl implements BrandService {
@@ -23,6 +26,14 @@ public class BrandServiceImpl implements BrandService {
     @Override
     public Boolean exists(Integer id) {
         return brandRepository.existsById(id);
+    }
+
+    @Override
+    public List<BrandDTO> findAll() {
+        return brandRepository.findAll()
+                .stream()
+                .map(mapper::toBrandDTO)
+                .collect(Collectors.toList());
     }
 
     @Override

@@ -4,8 +4,11 @@ import com.gestionvehiculos.gestionvehiculos.service.dto.VehicleDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public interface VehicleService {
+    List<VehicleDTO> findAll();
 
     Boolean exists(Integer id);
 

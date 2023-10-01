@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/api/vehicle/")
 public class VehicleController {
@@ -16,6 +18,11 @@ public class VehicleController {
 
     public VehicleController(@Qualifier("VehicleServiceImpl") VehicleService service) {
         this.service = service;
+    }
+
+    @GetMapping
+    public ResponseEntity<List<VehicleDTO>> getAllVehicle() {
+        return ResponseEntity.ok(service.findAll());
     }
 
     @GetMapping("{id}")

@@ -2,11 +2,14 @@ package com.gestionvehiculos.gestionvehiculos.controller;
 
 import com.gestionvehiculos.gestionvehiculos.service.BrandService;
 import com.gestionvehiculos.gestionvehiculos.service.dto.BrandDTO;
+import com.gestionvehiculos.gestionvehiculos.service.dto.VehicleDTO;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/api/brand/")
@@ -18,6 +21,12 @@ public class BrandController {
     public BrandController(@Qualifier("BrandServiceImpl") BrandService service) {
         this.service = service;
     }
+
+    @GetMapping
+    public ResponseEntity<List<BrandDTO>> getAllBrand() {
+        return ResponseEntity.ok(service.findAll());
+    }
+
 
     @GetMapping("{id}")
     public ResponseEntity<BrandDTO> getBrandById(@PathVariable Integer id) {
