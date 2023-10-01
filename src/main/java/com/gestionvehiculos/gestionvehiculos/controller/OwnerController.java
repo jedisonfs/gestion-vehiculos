@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/api/owner")
+@RequestMapping("/api/owner/")
 public class OwnerController {
 
     private final OwnerService service;

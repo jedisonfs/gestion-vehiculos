@@ -25,7 +25,7 @@ public class TypeDocumentEntity implements Serializable {
     private String initials;
 
     @NotNull
-    @Column(name = "document_name", length = 20, nullable = false)
+    @Column(name = "document_name", length = 40, nullable = false)
     private String documentName;
 
     @OneToMany(mappedBy = ("typeDocumentId"),cascade = CascadeType.ALL)

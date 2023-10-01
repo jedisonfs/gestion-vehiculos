@@ -22,8 +22,8 @@ public class TypeVehicleEntity implements Serializable {
     @JoinColumn(name = "fk_type_terrain_id", nullable = false, foreignKey = @ForeignKey(name = ("fk_type_terrain_vehicle_id")), referencedColumnName = ("id"))
     private TypeTerrainEntity typeTerrainId;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "typeVehicleId")
-    private OwnerEntity ownerEntityId;
+//    @OneToOne(cascade = CascadeType.ALL, mappedBy = "typeVehicleId")
+//    private OwnerEntity ownerEntityId;
 
     public Integer getId() {
         return id;
@@ -49,11 +49,11 @@ public class TypeVehicleEntity implements Serializable {
         this.typeTerrainId = typeTerrainId;
     }
 
-    public OwnerEntity getOwnerEntityId() {
-        return ownerEntityId;
-    }
-
-    public void setOwnerEntityId(OwnerEntity ownerEntityId) {
-        this.ownerEntityId = ownerEntityId;
-    }
+//    public OwnerEntity getOwnerEntityId() {
+//        return ownerEntityId;
+//    }
+//
+//    public void setOwnerEntityId(OwnerEntity ownerEntityId) {
+//        this.ownerEntityId = ownerEntityId;
+//    }
 }

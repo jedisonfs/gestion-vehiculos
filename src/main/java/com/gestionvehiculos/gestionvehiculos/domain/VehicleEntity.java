@@ -43,6 +43,11 @@ public class VehicleEntity implements Serializable {
     @JoinColumn(name = ("fk_brand_id"), nullable = false, foreignKey = @ForeignKey(name = ("fk_vehicle_brand_id")), referencedColumnName = ("id"))
     private BrandEntity brandId;
 
+    @NotNull
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = ("fk_owner_id"), nullable = false, foreignKey = @ForeignKey(name = ("fk_owner_vehicle_id")), referencedColumnName = ("ownerId"))
+    private OwnerEntity ownerId;
+
 
     public Integer getId() {
         return id;
@@ -100,4 +105,11 @@ public class VehicleEntity implements Serializable {
         this.brandId = brandId;
     }
 
+    public OwnerEntity getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(OwnerEntity ownerId) {
+        this.ownerId = ownerId;
+    }
 }

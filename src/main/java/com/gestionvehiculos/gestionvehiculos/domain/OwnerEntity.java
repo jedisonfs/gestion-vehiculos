@@ -7,6 +7,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "owner", uniqueConstraints = {
@@ -53,15 +54,17 @@ public class OwnerEntity implements Serializable {
     private String phone;
 
 
-    @JsonIgnore
     @NotNull
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = ("fk_type_document_id"), nullable = false, foreignKey = @ForeignKey(name = ("fk_owner_type_document_id")), referencedColumnName = ("id"))
     private TypeDocumentEntity typeDocumentId;
 
-    @OneToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "fk_type_vehicle_id", nullable = false, foreignKey = @ForeignKey(name = "fk_owner_type_vehicle"), referencedColumnName = "id")
-    private TypeVehicleEntity typeVehicleId;
+//    @OneToOne(optional = false, fetch = FetchType.LAZY)
+//    @JoinColumn(name = "fk_type_vehicle_id", nullable = false, foreignKey = @ForeignKey(name = "fk_owner_type_vehicle"), referencedColumnName = "id")
+//    private TypeVehicleEntity typeVehicleId;
+
+    @OneToMany(mappedBy = "ownerId", cascade = CascadeType.ALL)
+    private List<VehicleEntity> vehicleId;
 
     public Integer getOwnerId() {
         return ownerId;
@@ -151,11 +154,19 @@ public class OwnerEntity implements Serializable {
         this.typeDocumentId = typeDocumentId;
     }
 
-    public TypeVehicleEntity getTypeVehicleId() {
-        return typeVehicleId;
+    public List<VehicleEntity> getVehicleId() {
+        return vehicleId;
     }
 
-    public void setTypeVehicleId(TypeVehicleEntity typeVehicleId) {
-        this.typeVehicleId = typeVehicleId;
+    public void setVehicleId(List<VehicleEntity> vehicleId) {
+        this.vehicleId = vehicleId;
     }
+
+    //    public TypeVehicleEntity getTypeVehicleId() {
+//        return typeVehicleId;
+//    }
+//
+//    public void setTypeVehicleId(TypeVehicleEntity typeVehicleId) {
+//        this.typeVehicleId = typeVehicleId;
+//    }
 }

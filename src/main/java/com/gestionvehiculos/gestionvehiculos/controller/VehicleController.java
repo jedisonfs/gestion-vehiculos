@@ -23,12 +23,12 @@ public class VehicleController {
         return ResponseEntity.ok(service.findById(id));
     }
 
-    @GetMapping("{plate}")
+    @GetMapping("plate/{plate}")
     public ResponseEntity<VehicleDTO> getVehicleByPlate(@PathVariable String plate) {
         return ResponseEntity.ok(service.findByPlate(plate));
     }
 
-    @GetMapping("{vin}")
+    @GetMapping("vin/{vin}")
     public ResponseEntity<VehicleDTO> getVehicleByVin(@PathVariable String vin) {
         return ResponseEntity.ok(service.findByPlate(vin));
     }
