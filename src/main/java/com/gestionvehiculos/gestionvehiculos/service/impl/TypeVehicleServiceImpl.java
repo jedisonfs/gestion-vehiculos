@@ -5,18 +5,17 @@ import com.gestionvehiculos.gestionvehiculos.repository.TypeVehicleRepository;
 import com.gestionvehiculos.gestionvehiculos.service.TypeVehicleService;
 import com.gestionvehiculos.gestionvehiculos.service.dto.TypeVehicleDTO;
 import com.gestionvehiculos.gestionvehiculos.service.mapper.TypeVehicleMapper;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-@Component("typeVehicleServiceImpl")
 @Transactional
+@Component("TypeVehicleServiceImpl")
 public class TypeVehicleServiceImpl implements TypeVehicleService {
 
     private final TypeVehicleRepository repository;
     private final TypeVehicleMapper mapper;
 
-    public TypeVehicleServiceImpl(TypeVehicleRepository repository, @Qualifier("TypeVehicleMapper") TypeVehicleMapper mapper) {
+    public TypeVehicleServiceImpl(TypeVehicleRepository repository, TypeVehicleMapper mapper) {
         this.repository = repository;
         this.mapper = mapper;
     }
@@ -33,14 +32,14 @@ public class TypeVehicleServiceImpl implements TypeVehicleService {
 
     @Override
     public TypeVehicleDTO findById(Integer id) {
-        return  repository.findById(id)
+        return repository.findById(id)
                 .map(mapper::toTypeVehicleDTO)
                 .orElseThrow(() -> new NullPointerException("Not found type vehicle"));
     }
 
     @Override
     public TypeVehicleDTO findByNameTypeVehicle(String nameTypeVehicle) {
-        return  repository.findByNameTypeVehicle(nameTypeVehicle)
+        return repository.findByNameTypeVehicle(nameTypeVehicle)
                 .map(mapper::toTypeVehicleDTO)
                 .orElseThrow(() -> new NullPointerException("Not found type vehicle"));
     }

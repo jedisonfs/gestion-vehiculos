@@ -16,7 +16,7 @@ public class TypeTerrainServiceImpl implements TypeTerrainService {
     private final TypeTerrainRepository repository;
     private final TypeTerrainMapper mapper;
 
-    public TypeTerrainServiceImpl(TypeTerrainRepository repository, @Qualifier("TypeTerrainMapper") TypeTerrainMapper mapper) {
+    public TypeTerrainServiceImpl(TypeTerrainRepository repository, @Qualifier("typeTerrainMapperImpl") TypeTerrainMapper mapper) {
         this.repository = repository;
         this.mapper = mapper;
     }

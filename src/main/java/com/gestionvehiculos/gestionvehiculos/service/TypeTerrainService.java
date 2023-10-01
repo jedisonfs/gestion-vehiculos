@@ -1,7 +1,6 @@
 package com.gestionvehiculos.gestionvehiculos.service;
 
 import com.gestionvehiculos.gestionvehiculos.service.dto.TypeTerrainDTO;
-import com.gestionvehiculos.gestionvehiculos.service.dto.TypeVehicleDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,19 +9,19 @@ public interface TypeTerrainService {
 
     Boolean exists(Integer id);
 
-    Boolean existsByPlate(String initial);
+    Boolean existsByNameTerrain(String nameTerrain);
 
     @Transactional(readOnly = true)
-    TypeVehicleDTO findById(Integer id);
+    TypeTerrainDTO findById(Integer id);
 
     @Transactional(readOnly = true)
-    TypeVehicleDTO findByNameTypeVehicle(String plate);
+    TypeTerrainDTO findByNameTerrain(String nameTerrain);
 
-    TypeVehicleDTO save(TypeVehicleDTO TypeVehicleDTO);
+    TypeTerrainDTO save(TypeTerrainDTO TypeVehicleDTO);
 
-    TypeVehicleDTO update(TypeVehicleDTO TypeVehicleDTO);
+    TypeTerrainDTO update(TypeTerrainDTO TypeVehicleDTO);
 
     void deleteById(Integer id);
 
-    void deleteByNameTypeVehicle(String nameTypeVehicle);
+    void deleteByNameTerrain(String nameTypeVehicle);
 }

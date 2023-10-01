@@ -2,6 +2,7 @@ package com.gestionvehiculos.gestionvehiculos.controller;
 
 import com.gestionvehiculos.gestionvehiculos.service.TypeVehicleService;
 import com.gestionvehiculos.gestionvehiculos.service.dto.TypeVehicleDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -13,8 +14,8 @@ public class TypeVehicleController {
 
     private final TypeVehicleService service;
 
-
-    public TypeVehicleController(@Qualifier("typeVehicleServiceImpl") TypeVehicleService service) {
+    @Autowired
+    public TypeVehicleController(@Qualifier("TypeVehicleServiceImpl") TypeVehicleService service) {
         this.service = service;
     }
 
@@ -46,7 +47,7 @@ public class TypeVehicleController {
     public ResponseEntity<Void> deleteTypeVehicleByName(@PathVariable String name) {
         if (service.existsByNameTypeVehicle(name)) {
             service.deleteByNameTypeVehicle(name);
-            return  ResponseEntity.ok().build();
+            return ResponseEntity.ok().build();
         }
         return ResponseEntity.badRequest().build();
     }

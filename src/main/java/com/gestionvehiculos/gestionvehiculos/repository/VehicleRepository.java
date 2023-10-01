@@ -9,7 +9,6 @@ import java.util.Optional;
 @Repository
 public interface VehicleRepository extends CrudRepository<VehicleEntity, Integer> {
 
-    Boolean exists(Integer id);
 
     Boolean existsByPlate(String plate);
     Boolean existsByVin(String vin);

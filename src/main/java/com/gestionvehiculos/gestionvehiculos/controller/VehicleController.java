@@ -56,19 +56,19 @@ public class VehicleController {
         return ResponseEntity.badRequest().build();
     }
 
-    @DeleteMapping("{intitial}")
-    public ResponseEntity<Void> deleteVehicleByVin(@PathVariable String vin) {
-        if (service.existsByPlate(vin)) {
-            service.deleteByPlate(vin);
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> deleteVehicleById(@PathVariable Integer id) {
+        if (service.exists(id)) {
+            service.deleteById(id);
             return ResponseEntity.ok().build();
         }
         return ResponseEntity.badRequest().build();
     }
 
-    @DeleteMapping("{id}")
-    public ResponseEntity<Void> deleteVehicleById(@PathVariable Integer id) {
-        if (service.exists(id)) {
-            service.deleteById(id);
+    @DeleteMapping("{vin}")
+    public ResponseEntity<Void> deleteVehicleByVin(@PathVariable String vin) {
+        if (service.existsByPlate(vin)) {
+            service.deleteByPlate(vin);
             return ResponseEntity.ok().build();
         }
         return ResponseEntity.badRequest().build();
