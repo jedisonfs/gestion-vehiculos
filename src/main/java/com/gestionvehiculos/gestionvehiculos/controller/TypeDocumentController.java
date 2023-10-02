@@ -43,7 +43,7 @@ public class TypeDocumentController {
         return ResponseEntity.badRequest().build();
     }
 
-    @DeleteMapping("{intitial}")
+    @DeleteMapping("initial/{intitial}")
     public ResponseEntity<Void> deleteTypeDocumentByInitial(@PathVariable String intitial) {
         if (service.existsByInitial(intitial)) {
             service.deleteByInitials(intitial);

@@ -4,10 +4,14 @@ import com.gestionvehiculos.gestionvehiculos.service.dto.TypeTerrainDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public interface TypeTerrainService {
 
     Boolean exists(Integer id);
+
+    List<TypeTerrainDTO> findAll();
 
     Boolean existsByNameTerrain(String nameTerrain);
 

@@ -2,11 +2,14 @@ package com.gestionvehiculos.gestionvehiculos.controller;
 
 import com.gestionvehiculos.gestionvehiculos.service.TypeVehicleService;
 import com.gestionvehiculos.gestionvehiculos.service.dto.TypeVehicleDTO;
+import com.gestionvehiculos.gestionvehiculos.service.dto.VehicleDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/api/type-vehicle/")
@@ -17,6 +20,11 @@ public class TypeVehicleController {
     @Autowired
     public TypeVehicleController(@Qualifier("TypeVehicleServiceImpl") TypeVehicleService service) {
         this.service = service;
+    }
+
+    @GetMapping
+    public ResponseEntity<List<TypeVehicleDTO>> getAllVehicle() {
+        return ResponseEntity.ok(service.findAll());
     }
 
     @GetMapping("{name}")
@@ -43,7 +51,7 @@ public class TypeVehicleController {
         return ResponseEntity.badRequest().build();
     }
 
-    @DeleteMapping("{name}")
+    @DeleteMapping("name/{name}")
     public ResponseEntity<Void> deleteTypeVehicleByName(@PathVariable String name) {
         if (service.existsByNameTypeVehicle(name)) {
             service.deleteByNameTypeVehicle(name);

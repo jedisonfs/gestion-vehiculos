@@ -40,11 +40,15 @@ public class OwnerDTO implements Serializable {
 
     @NotNull
     private String phone;
-
-
-//    @NotNull
-//    private TypeDocumentDTO typeDocumentId;
-//
-//    private TypeVehicleDTO typeVehicleId;
+    @NotNull
+    private String document;
+    @NotNull
+    private String nameDocument;
+    @NotNull
+    private String plate;
+    @NotNull
+    private String brandName;
+    @NotNull
+    private String colorVehicle;
 
 }

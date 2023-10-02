@@ -11,8 +11,6 @@ import java.io.Serializable;
 })
 public class BrandEntity implements Serializable {
 
-    private static final long serialVersionUID = 53L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;

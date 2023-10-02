@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "vehicle", uniqueConstraints = {
@@ -12,8 +13,6 @@ import java.io.Serializable;
         @UniqueConstraint(name = "uk_vin", columnNames = {"vin"})
 })
 public class VehicleEntity implements Serializable {
-
-    private static final long serialVersionUID = 237L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,14 +38,13 @@ public class VehicleEntity implements Serializable {
 
     @JsonIgnore
     @NotNull
-    @OneToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = ("fk_brand_id"), nullable = false, foreignKey = @ForeignKey(name = ("fk_vehicle_brand_id")), referencedColumnName = ("id"))
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = ("fk_brand_id")/*, foreignKey = @ForeignKey(name = ("fk_vehicle_brand_id")), referencedColumnName = ("id")*/)
     private BrandEntity brandId;
 
-    @NotNull
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = ("fk_owner_id"), nullable = false, foreignKey = @ForeignKey(name = ("fk_owner_vehicle_id")), referencedColumnName = ("ownerId"))
-    private OwnerEntity ownerId;
+    @JsonIgnore
+    @OneToMany(mappedBy = "vehicleId", cascade = CascadeType.ALL)
+    private List<OwnerEntity> ownerId;
 
 
     public Integer getId() {
@@ -105,11 +103,11 @@ public class VehicleEntity implements Serializable {
         this.brandId = brandId;
     }
 
-    public OwnerEntity getOwnerId() {
+    public List<OwnerEntity> getOwnerId() {
         return ownerId;
     }
 
-    public void setOwnerId(OwnerEntity ownerId) {
+    public void setOwnerId(List<OwnerEntity> ownerId) {
         this.ownerId = ownerId;
     }
 }

@@ -4,9 +4,13 @@ import com.gestionvehiculos.gestionvehiculos.domain.TypeVehicleEntity;
 import com.gestionvehiculos.gestionvehiculos.repository.TypeVehicleRepository;
 import com.gestionvehiculos.gestionvehiculos.service.TypeVehicleService;
 import com.gestionvehiculos.gestionvehiculos.service.dto.TypeVehicleDTO;
+import com.gestionvehiculos.gestionvehiculos.service.dto.VehicleDTO;
 import com.gestionvehiculos.gestionvehiculos.service.mapper.TypeVehicleMapper;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Transactional
 @Component("TypeVehicleServiceImpl")
@@ -28,6 +32,14 @@ public class TypeVehicleServiceImpl implements TypeVehicleService {
     @Override
     public Boolean existsByNameTypeVehicle(String nameTypeVehicle) {
         return repository.existsByNameTypeVehicle(nameTypeVehicle);
+    }
+
+    @Override
+    public List<TypeVehicleDTO> findAll() {
+        return repository.findAll()
+                .stream()
+                .map(mapper::toTypeVehicleDTO)
+                .collect(Collectors.toList());
     }
 
     @Override

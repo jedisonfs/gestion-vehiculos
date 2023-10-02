@@ -7,7 +7,6 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "owner", uniqueConstraints = {
@@ -16,10 +15,8 @@ import java.util.List;
 })
 public class OwnerEntity implements Serializable {
 
-    private static final long serialVersionUID = 56L;
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer ownerId;
 
     @NotNull
@@ -54,17 +51,13 @@ public class OwnerEntity implements Serializable {
     private String phone;
 
 
-    @NotNull
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = ("fk_type_document_id"), nullable = false, foreignKey = @ForeignKey(name = ("fk_owner_type_document_id")), referencedColumnName = ("id"))
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = ("fk_type_document_id") /*, nullable = false, foreignKey = @ForeignKey(name = ("fk_owner_type_document_id")), referencedColumnName = ("id")*/)
     private TypeDocumentEntity typeDocumentId;
 
-//    @OneToOne(optional = false, fetch = FetchType.LAZY)
-//    @JoinColumn(name = "fk_type_vehicle_id", nullable = false, foreignKey = @ForeignKey(name = "fk_owner_type_vehicle"), referencedColumnName = "id")
-//    private TypeVehicleEntity typeVehicleId;
-
-    @OneToMany(mappedBy = "ownerId", cascade = CascadeType.ALL)
-    private List<VehicleEntity> vehicleId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = ("fk_vehicle_id") /*nullable = false, foreignKey = @ForeignKey(name = ("fk_owner_vehicle_id")), referencedColumnName = ("id")*/)
+    private VehicleEntity vehicleId;
 
     public Integer getOwnerId() {
         return ownerId;
@@ -154,19 +147,11 @@ public class OwnerEntity implements Serializable {
         this.typeDocumentId = typeDocumentId;
     }
 
-    public List<VehicleEntity> getVehicleId() {
+    public VehicleEntity getVehicleId() {
         return vehicleId;
     }
 
-    public void setVehicleId(List<VehicleEntity> vehicleId) {
+    public void setVehicleId(VehicleEntity vehicleId) {
         this.vehicleId = vehicleId;
     }
-
-    //    public TypeVehicleEntity getTypeVehicleId() {
-//        return typeVehicleId;
-//    }
-//
-//    public void setTypeVehicleId(TypeVehicleEntity typeVehicleId) {
-//        this.typeVehicleId = typeVehicleId;
-//    }
 }

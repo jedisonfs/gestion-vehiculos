@@ -1,11 +1,14 @@
 package com.gestionvehiculos.gestionvehiculos.controller;
 
 import com.gestionvehiculos.gestionvehiculos.service.dto.TypeTerrainDTO;
+import com.gestionvehiculos.gestionvehiculos.service.dto.VehicleDTO;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import com.gestionvehiculos.gestionvehiculos.service.TypeTerrainService;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/api/type-terrain/")
@@ -15,6 +18,11 @@ public class TypeTerrainController {
 
     public TypeTerrainController(@Qualifier("typeTerrainServiceImpl") TypeTerrainService service) {
         this.service = service;
+    }
+
+    @GetMapping
+    public ResponseEntity<List<TypeTerrainDTO>> getAllTypeTerrain() {
+        return ResponseEntity.ok(service.findAll());
     }
 
     @GetMapping("{nameTerrain}")

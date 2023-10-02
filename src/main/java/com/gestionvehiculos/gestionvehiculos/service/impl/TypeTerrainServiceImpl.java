@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Component("typeTerrainServiceImpl")
 @Transactional
 public class TypeTerrainServiceImpl implements TypeTerrainService {
@@ -31,6 +34,13 @@ public class TypeTerrainServiceImpl implements TypeTerrainService {
         return repository.existsByNameTerrain(nameTerrain);
     }
 
+    @Override
+    public List<TypeTerrainDTO> findAll() {
+        return repository.findAll()
+                .stream()
+                .map(mapper::toTypeTerrainDTO)
+                .collect(Collectors.toList());
+    }
     @Override
     public TypeTerrainDTO findById(Integer id) {
         return repository.findById(id)

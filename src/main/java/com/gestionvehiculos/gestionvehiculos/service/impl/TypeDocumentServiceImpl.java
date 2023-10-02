@@ -4,9 +4,13 @@ import com.gestionvehiculos.gestionvehiculos.domain.TypeDocumentEntity;
 import com.gestionvehiculos.gestionvehiculos.repository.TypeDocumenRepository;
 import com.gestionvehiculos.gestionvehiculos.service.TypeDocumentService;
 import com.gestionvehiculos.gestionvehiculos.service.dto.TypeDocumentDTO;
+import com.gestionvehiculos.gestionvehiculos.service.dto.VehicleDTO;
 import com.gestionvehiculos.gestionvehiculos.service.mapper.TypeDocumentMapper;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Transactional
 @Component("TypeDocumentServiceImpl")
@@ -37,6 +41,14 @@ public class TypeDocumentServiceImpl implements TypeDocumentService {
                 .map(documentMapper::toTypeDocumentDTO)
                 .orElseThrow(() -> new NullPointerException("Not found typeDocument"));
     }
+
+//    @Override
+//    public List<VehicleDTO> findAll() {
+//        return r.findAll()
+//                .stream()
+//                .map(mapper::toVehicleDTO)
+//                .collect(Collectors.toList());
+//    }
 
     @Override
     public TypeDocumentDTO findByInitials(String initials) {

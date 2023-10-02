@@ -1,5 +1,6 @@
 package com.gestionvehiculos.gestionvehiculos.controller;
 
+import com.gestionvehiculos.gestionvehiculos.domain.VehicleEntity;
 import com.gestionvehiculos.gestionvehiculos.service.VehicleService;
 import com.gestionvehiculos.gestionvehiculos.service.dto.VehicleDTO;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -41,12 +42,13 @@ public class VehicleController {
     }
 
     @PostMapping()
-    public ResponseEntity<VehicleDTO> save(@RequestBody VehicleDTO vehicleDTO) {
-        return ResponseEntity.ok(service.save(vehicleDTO));
+    public ResponseEntity<VehicleEntity> save(@RequestBody VehicleEntity vehicle) {
+
+        return ResponseEntity.ok(service.save(vehicle));
     }
 
     @PutMapping
-    public ResponseEntity<VehicleDTO> update(@RequestBody VehicleDTO vehicleDTO) {
+    public ResponseEntity<VehicleEntity> update(@RequestBody VehicleEntity vehicleDTO) {
         if (vehicleDTO.getId() != null && service.exists(vehicleDTO.getId())) {
             return ResponseEntity.ok(service.save(vehicleDTO));
         }

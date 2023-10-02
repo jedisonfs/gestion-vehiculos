@@ -19,7 +19,7 @@ public class TypeVehicleEntity implements Serializable {
     private String nameTypeVehicle;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "fk_type_terrain_id", nullable = false, foreignKey = @ForeignKey(name = ("fk_type_terrain_vehicle_id")), referencedColumnName = ("id"))
+    @JoinColumn(name = "fk_type_terrain_id"/*, nullable = false, foreignKey = @ForeignKey(name = ("fk_type_terrain_vehicle_id")), referencedColumnName = ("id")*/)
     private TypeTerrainEntity typeTerrainId;
 
 //    @OneToOne(cascade = CascadeType.ALL, mappedBy = "typeVehicleId")

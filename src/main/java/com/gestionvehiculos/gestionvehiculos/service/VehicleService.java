@@ -1,5 +1,6 @@
 package com.gestionvehiculos.gestionvehiculos.service;
 
+import com.gestionvehiculos.gestionvehiculos.domain.VehicleEntity;
 import com.gestionvehiculos.gestionvehiculos.service.dto.VehicleDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,6 +14,7 @@ public interface VehicleService {
     Boolean exists(Integer id);
 
     Boolean existsByPlate(String plate);
+
     Boolean existsByVin(String vin);
 
     @Transactional(readOnly = true)
@@ -24,7 +26,8 @@ public interface VehicleService {
     @Transactional(readOnly = true)
     VehicleDTO findByVin(String vin);
 
-    VehicleDTO save(VehicleDTO vehicleDTO);
+    //    VehicleDTO save(VehicleDTO vehicleDTO);
+    VehicleEntity save(VehicleEntity vehicleDTO);
 
     VehicleDTO update(VehicleDTO vehicleDTO);
 

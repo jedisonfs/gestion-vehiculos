@@ -4,8 +4,13 @@ import com.gestionvehiculos.gestionvehiculos.domain.OwnerEntity;
 import com.gestionvehiculos.gestionvehiculos.repository.OwnerRepository;
 import com.gestionvehiculos.gestionvehiculos.service.OwnerService;
 import com.gestionvehiculos.gestionvehiculos.service.dto.OwnerDTO;
+import com.gestionvehiculos.gestionvehiculos.service.dto.VehicleDTO;
 import com.gestionvehiculos.gestionvehiculos.service.mapper.OwnerMapper;
 import org.springframework.stereotype.Component;
+
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Component("OwnerServiceImpl")
 public class OwnerServiceImpl implements OwnerService {
@@ -35,6 +40,24 @@ public class OwnerServiceImpl implements OwnerService {
     }
 
     @Override
+    public List<OwnerDTO> findAllByFirstNameAndFirstSurname(String firstName, String firstSurname) {
+        List<OwnerEntity> entityList = repository.findAllByFirstNameAndFirstSurname(firstName,firstSurname);
+
+        return entityList.stream()
+                .sorted(Comparator.comparing(ownerEntity -> ownerEntity.getVehicleId().getPlate()))
+                .map(mapper::toOwnerDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<OwnerDTO> findAll() {
+        return repository.findAll()
+                .stream()
+                .map(mapper::toOwnerDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public OwnerDTO findByownerId(Integer ownerId) {
         return repository.findById(ownerId)
                 .map(mapper::toOwnerDTO)
@@ -56,15 +79,17 @@ public class OwnerServiceImpl implements OwnerService {
     }
 
     @Override
-    public OwnerDTO save(OwnerDTO ownerDTO) {
-        OwnerEntity entity = repository.save(mapper.toOwnerEntity(ownerDTO));
-        return mapper.toOwnerDTO(entity);
+    public OwnerEntity save(OwnerEntity ownerDTO) {
+//        OwnerEntity entity = repository.save(mapper.toOwnerEntity(ownerDTO));
+        return repository.save(ownerDTO);
+//        return mapper.toOwnerDTO(entity);
     }
 
     @Override
-    public OwnerDTO update(OwnerDTO ownerDTO) {
-        OwnerEntity entity = repository.save(mapper.toOwnerEntity(ownerDTO));
-        return mapper.toOwnerDTO(entity);
+    public OwnerEntity update(OwnerEntity ownerDTO) {
+//        OwnerEntity entity = repository.save(mapper.toOwnerEntity(ownerDTO));
+//        return mapper.toOwnerDTO(entity);
+        return repository.save(ownerDTO);
     }
 
     @Override

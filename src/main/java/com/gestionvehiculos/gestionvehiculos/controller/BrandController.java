@@ -2,7 +2,6 @@ package com.gestionvehiculos.gestionvehiculos.controller;
 
 import com.gestionvehiculos.gestionvehiculos.service.BrandService;
 import com.gestionvehiculos.gestionvehiculos.service.dto.BrandDTO;
-import com.gestionvehiculos.gestionvehiculos.service.dto.VehicleDTO;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -60,7 +59,7 @@ public class BrandController {
         return ResponseEntity.badRequest().build();
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("delete-id/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable Integer id) {
         if (id != null || service.exists(id)) {
             service.deleteById(id);
@@ -69,7 +68,7 @@ public class BrandController {
         return ResponseEntity.badRequest().build();
     }
 
-    @DeleteMapping("{brandName}")
+    @DeleteMapping("delete-name/{brandName}")
     public ResponseEntity<Void> deleteById(@PathVariable String brandName) {
         if (brandName != null || service.existsByBrandName(brandName)) {
             service.deleteByBrandName(brandName);

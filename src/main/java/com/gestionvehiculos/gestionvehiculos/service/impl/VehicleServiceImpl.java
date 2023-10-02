@@ -70,9 +70,9 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
-    public VehicleDTO save(VehicleDTO vehicleDTO) {
-        VehicleEntity entity = repository.save(mapper.toVehicleEntity(vehicleDTO));
-        return mapper.toVehicleDTO(entity);
+    public VehicleEntity save(VehicleEntity vehicleDTO) {
+//        VehicleEntity entity = repository.save(mapper.toVehicleEntity(vehicleDTO));
+        return repository.save(vehicleDTO);
     }
 
     @Override

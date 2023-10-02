@@ -2,6 +2,7 @@ package com.gestionvehiculos.gestionvehiculos.service.dto;
 
 import lombok.*;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
@@ -14,7 +15,6 @@ public class VehicleDTO implements Serializable {
 
     private static final long serialVersionUID = 237L;
 
-    @NotNull
     private Integer id;
 
     @NotNull
@@ -30,7 +30,7 @@ public class VehicleDTO implements Serializable {
     @NotNull
     private String chassis;
 
-//    @NotNull
-//    private BrandDTO brandId;
+    @NotNull
+    private String brandName;
 
 }
