@@ -43,6 +43,12 @@ public class VehicleEntity implements Serializable {
     private BrandEntity brandId;
 
     @JsonIgnore
+    @NotNull
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = ("fk_type_vehicle_id")/*, foreignKey = @ForeignKey(name = ("fk_vehicle_brand_id")), referencedColumnName = ("id")*/)
+    private TypeVehicleEntity typeVehicleId;
+
+    @JsonIgnore
     @OneToMany(mappedBy = "vehicleId", cascade = CascadeType.ALL)
     private List<OwnerEntity> ownerId;
 
