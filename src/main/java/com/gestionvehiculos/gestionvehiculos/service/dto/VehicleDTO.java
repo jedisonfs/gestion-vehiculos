@@ -15,7 +15,7 @@ public class VehicleDTO implements Serializable {
 
     private static final long serialVersionUID = 237L;
 
-    private Integer id;
+//    private Integer id;
 
     @NotNull
     private String plate;
@@ -32,5 +32,8 @@ public class VehicleDTO implements Serializable {
 
     @NotNull
     private String brandName;
+
+    @NotNull
+    private String nameTypeVehicle;
 
 }

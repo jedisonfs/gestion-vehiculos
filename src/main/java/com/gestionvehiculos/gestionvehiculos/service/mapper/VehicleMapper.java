@@ -20,6 +20,7 @@ public interface VehicleMapper {
     @Mapping(source = "vehicleEntity.color", target = "color")
     @Mapping(source = "vehicleEntity.chassis", target = "chassis")
     @Mapping(source = "vehicleEntity.brandId.brandName", target = "brandName")
+    @Mapping(source = "vehicleEntity.typeVehicleId.nameTypeVehicle", target = "nameTypeVehicle")
     VehicleDTO toVehicleDTO(VehicleEntity vehicleEntity);
 
     @InheritConfiguration

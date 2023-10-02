@@ -116,4 +116,12 @@ public class VehicleEntity implements Serializable {
     public void setOwnerId(List<OwnerEntity> ownerId) {
         this.ownerId = ownerId;
     }
+
+    public TypeVehicleEntity getTypeVehicleId() {
+        return typeVehicleId;
+    }
+
+    public void setTypeVehicleId(TypeVehicleEntity typeVehicleId) {
+        this.typeVehicleId = typeVehicleId;
+    }
 }
